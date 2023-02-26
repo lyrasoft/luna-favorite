@@ -29,13 +29,14 @@ $mig->up(
             function (Schema $schema) {
                 $schema->primary('id');
                 $schema->char('type')->length(20);
-                $schema->integer('user_id');
-                $schema->integer('target_id');
+                $schema->varchar('user_id')->length(120);
+                $schema->varchar('target_id')->length(120);
                 $schema->datetime('created');
 
                 $schema->addIndex('type');
                 $schema->addIndex('user_id');
-                $schema->addIndex('product_id');
+                $schema->addIndex('target_id');
+                $schema->addUniqueKey(['type', 'user_id', 'target_id']);
             }
         );
     }

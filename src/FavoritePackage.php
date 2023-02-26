@@ -66,6 +66,17 @@ class FavoritePackage extends AbstractPackage implements ServiceProviderInterfac
         // $installer->installSeeders(static::path('resources/seeders/**/*'), 'seeders');
         $installer->installRoutes(static::path('routes/**/*.php'), 'routes');
         $installer->installViews(static::path('views/*.blade.php'), 'views');
+        $installer->installModules(
+            [
+                static::path("src/Entity/Favorite.php") => '@source/Entity',
+                static::path("src/Repository/FavoriteRepository.php") => '@source/Repository',
+            ],
+            [
+                'Lyrasoft\\Favorite\\Entity' => 'App\\Entity',
+                'Lyrasoft\\Favorite\\Repository' => 'App\\Repository',
+            ],
+            ['modules', 'model']
+        );
     }
 
     public function config(string $name, ?string $delimiter = '.'): mixed

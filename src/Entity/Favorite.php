@@ -40,10 +40,10 @@ class Favorite implements EntityInterface
     protected string $type = '';
 
     #[Column('user_id')]
-    protected int $userId = 0;
+    protected string $userId = '';
 
     #[Column('target_id')]
-    protected int $targetId = 0;
+    protected string $targetId = '';
 
     #[Column('created')]
     #[CastNullable(Chronos::class)]
@@ -68,26 +68,14 @@ class Favorite implements EntityInterface
         return $this;
     }
 
-    public function getUserId(): int
+    public function getUserId(): string
     {
         return $this->userId;
     }
 
-    public function setUserId(int $userId): static
+    public function setUserId(int|string $userId): static
     {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    public function getTargetId(): int
-    {
-        return $this->targetId;
-    }
-
-    public function setTargetId(int $targetId): static
-    {
-        $this->targetId = $targetId;
+        $this->userId = (string) $userId;
 
         return $this;
     }
@@ -120,6 +108,26 @@ class Favorite implements EntityInterface
     public function setType(string $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTargetId(): string
+    {
+        return $this->targetId;
+    }
+
+    /**
+     * @param  string|int  $targetId
+     *
+     * @return  static  Return self to support chaining.
+     */
+    public function setTargetId(string|int $targetId): static
+    {
+        $this->targetId = (string) $targetId;
 
         return $this;
     }
