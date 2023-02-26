@@ -14,5 +14,12 @@
         }
     ],
     "minimum-stability": "beta",
-    "require": {}
+    "require": {},
+    "extra": {
+        "windwalker":{
+            "packages": [
+                "Lyrasoft\\Favorite\\FavoritePackage"
+            ]
+        }
+    }
 }
