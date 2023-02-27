@@ -36,7 +36,7 @@ System.register(["@main"], function (_export, _context) {
               id: this.id,
               type: this.type
             });
-            this.el.dispatchEvent(new CustomEvent('change', {
+            this.el.dispatchEvent(new CustomEvent('favorited', {
               detail: {
                 favorited: !this.added,
                 task,

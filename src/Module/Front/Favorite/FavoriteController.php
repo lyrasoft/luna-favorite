@@ -13,6 +13,7 @@ namespace Lyrasoft\Favorite\Module\Front\Favorite;
 
 use Lyrasoft\Favorite\Entity\Favorite;
 use Lyrasoft\Favorite\FavoritePackage;
+use Lyrasoft\Favorite\Service\FavoriteService;
 use Lyrasoft\Luna\User\UserService;
 use Windwalker\Core\Application\AppContext;
 use Windwalker\Core\Attributes\Controller;
@@ -42,9 +43,9 @@ class FavoriteController
 
     public function addFavorite(
         AppContext $app,
-        ORM $orm,
         UserService $userService,
-        FavoritePackage $favoritePackage
+        FavoritePackage $favoritePackage,
+        FavoriteService $favoriteService,
     ): Favorite {
         $id = $app->input('id');
         $type = $app->input('type');
@@ -62,18 +63,9 @@ class FavoriteController
             throw new \RuntimeException('Type is not allow.');
         }
 
-        $favorite = new Favorite();
-        $favorite->setType($type);
-        $favorite->setUserId($user->getId());
-        $favorite->setTargetId((int) $id);
+        $favorite = $favoriteService->addFavorite($type, $user->getId(), $id);
 
-        $favorite = $orm->createOne(Favorite::class, $favorite);
-
-        if ($this->hasLang('luna.favorite.' . $type . '.ajax.message.added')) {
-            $message = $this->trans('luna.favorite.' . $type . '.ajax.message.added');
-        } else {
-            $message = $this->trans('luna.favorite.ajax.message.added');
-        }
+        $message = $this->trans('luna.favorite.ajax.message.added');
 
         $app->addMessage($message);
 
@@ -82,9 +74,9 @@ class FavoriteController
 
     public function removeFavorite(
         AppContext $app,
-        ORM $orm,
         UserService $userService,
-        FavoritePackage $favoritePackage
+        FavoritePackage $favoritePackage,
+        FavoriteService $favoriteService,
     ): bool {
         $id = $app->input('id');
         $type = $app->input('type');
@@ -102,16 +94,9 @@ class FavoriteController
             throw new \RuntimeException('Type is not allow.');
         }
 
-        $orm->deleteWhere(
-            Favorite::class,
-            ['target_id' => $id, 'user_id' => $user->getId(), 'type' => $type]
-        );
+        $favoriteService->removeFavorite($type, $user->getId(), $id);
 
-        if ($this->hasLang('luna.favorite.' . $type . '.ajax.message.remove')) {
-            $message = $this->trans('luna.favorite.' . $type . '.ajax.message.remove');
-        } else {
-            $message = $this->trans('luna.favorite.ajax.message.remove');
-        }
+        $message = $this->trans('luna.favorite.ajax.message.remove');
 
         $app->addMessage($message);
 

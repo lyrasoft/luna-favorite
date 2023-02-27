@@ -59,6 +59,7 @@ class FavoriteRepository implements ManageRepositoryInterface, ListRepositoryInt
         int|string $userId,
         string $idField
     ): Query|ListSelector {
+        $query->selectRaw('IF(favorite.id IS NOT NULL, 1, 0) AS favorited');
         $query->leftJoin(
             Favorite::class,
             'favorite',

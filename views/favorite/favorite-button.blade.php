@@ -16,6 +16,7 @@ namespace App\view;
  * @var $lang      LangService     The language translation service.
  */
 
+use Lyrasoft\Favorite\Script\FavoriteScript;
 use Windwalker\Core\Application\AppContext;
 use Windwalker\Core\Asset\AssetService;
 use Windwalker\Core\DateTime\ChronosService;
@@ -27,6 +28,8 @@ use Windwalker\Edge\Component\ComponentAttributes;
 /**
  * @var $attributes ComponentAttributes
  */
+
+$app->service(FavoriteScript::class)->favoriteButton();
 
 $added ??= false;
 
@@ -63,6 +66,6 @@ $attributes['data-title-inactive'] = $titleInactive ??= $lang('luna.favorite.too
 
 ?>
 
-<a {!! $attributes !!}>
-    <i class="{{ $iconInactive }}"></i>
-</a>
+<{{ $tag }} {!! $attributes !!}>
+<i class="{{ $iconInactive }}"></i>
+</{{ $tag }}>

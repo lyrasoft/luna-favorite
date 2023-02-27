@@ -43,7 +43,7 @@ class FavoriteButton {
       );
 
       this.el.dispatchEvent(
-        new CustomEvent('change', {
+        new CustomEvent('favorited', {
           detail: {
             favorited: !this.added,
             task,

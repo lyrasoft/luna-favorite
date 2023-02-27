@@ -19,14 +19,10 @@ return [
         ],
 
         'ajax' => [
-            'type_protect' => false,
+            'type_protect' => true,
             'allow_types' => [
                 'article'
             ]
-        ],
-
-        'fixtures' => [
-            'article' => Article::class,
         ],
     ]
 ];
