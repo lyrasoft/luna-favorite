@@ -39,6 +39,8 @@ $attributes->props(
     'class-inactive',
     'icon-active',
     'icon-inactive',
+    'title-active',
+    'title-inactive',
     'type',
 );
 
@@ -56,6 +58,8 @@ $attributes['data-class-active'] = $classActive ??= '';
 $attributes['data-class-inactive'] = $classInactive ??= '';
 $attributes['data-icon-active'] = $iconActive ??= 'fas fa-heart';
 $attributes['data-icon-inactive'] = $iconInactive ??= 'far fa-heart';
+$attributes['data-title-active'] = $titleActive ??= $lang('luna.favorite.tooltip.active');
+$attributes['data-title-inactive'] = $titleInactive ??= $lang('luna.favorite.tooltip.inactive')
 
 ?>
 
