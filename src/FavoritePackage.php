@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Lyrasoft\Favorite;
 
 use Lyrasoft\Favorite\Script\FavoriteScript;
+use Lyrasoft\Favorite\Service\FavoriteService;
 use Windwalker\Core\Application\ApplicationInterface;
 use Windwalker\Core\Package\AbstractPackage;
 use Windwalker\Core\Package\PackageInstaller;
@@ -32,6 +33,7 @@ class FavoritePackage extends AbstractPackage implements ServiceProviderInterfac
     {
         $container->share(static::class, $this);
         $container->prepareSharedObject(FavoriteScript::class);
+        $container->prepareSharedObject(FavoriteService::class);
 
         // View
         $container->mergeParameters(
