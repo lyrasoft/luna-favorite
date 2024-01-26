@@ -21,31 +21,13 @@ This package has no seeders, you must add your own seeders.
 Add this line to admin & front middleware if you don't want to override languages:
 
 ```php
-$this->lang->loadAllFromVendor('lyrasoft/shopgo', 'ini');
+$this->lang->loadAllFromVendor(\Windwalker\Language\LanguagePackage::class, 'ini');
 ```
 
 Or run this command to copy languages files:
 
 ```shell
 php windwalker pkg:install lyrasoft/favorite -t lang
-```
-
-### CSS/JS
-
-Add these vendors to `fusionfile.mjs`
-
-```javascript
-export async function install() {
-  return installVendors(
-    [
-      // ...
-    ],
-    [
-      // Add this
-      'lyrasoft/favorite'
-    ]
-  );
-}
 ```
 
 ## Seeders

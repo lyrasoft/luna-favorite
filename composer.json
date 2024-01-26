@@ -15,14 +15,15 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "myclabs/php-enum": "^1.8",
-        "lyrasoft/luna": "^1.0||^2.0"
+        "php": ">=8.2",
+        "lyrasoft/luna": "^2.0"
     },
     "extra": {
         "windwalker":{
             "packages": [
                 "Lyrasoft\\Favorite\\FavoritePackage"
-            ]
+            ],
+            "link": "assets/"
         }
     }
 }
