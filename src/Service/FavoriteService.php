@@ -54,7 +54,7 @@ class FavoriteService
      *
      * @return  array<StatementInterface>
      */
-    public function removeFavorite(string $type, int|string $userId, int|string $targetId): array
+    public function removeFavorite(string $type, int|string $userId, int|string $targetId): array|null
     {
         return $this->orm->deleteWhere(
             Favorite::class,
