@@ -23,7 +23,9 @@
             "packages": [
                 "Lyrasoft\\Favorite\\FavoritePackage"
             ],
-            "link": "assets/"
+            "assets": {
+                "link": "assets/"
+            }
         }
     }
 }
