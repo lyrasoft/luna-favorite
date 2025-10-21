@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../src/index.ts"],"sourcesContent":["import { FavoriteButtonModule } from '~favorite/favorite-button';\n\nexport function useFavoriteButton(): Promise<FavoriteButtonModule> {\n  return import('~favorite/favorite-button');\n}\n"],"names":[],"mappings":"AAEO,SAAS,oBAAmD;AACjE,SAAO,OAAO,6BAA2B;AAC3C;"}

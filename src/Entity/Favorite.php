@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Lyrasoft\Favorite\Entity;
 
-use DateTimeInterface;
 use Windwalker\Core\DateTime\Chronos;
 use Windwalker\ORM\Attributes\AutoIncrement;
 use Windwalker\ORM\Attributes\CastNullable;
@@ -23,10 +22,13 @@ use Windwalker\ORM\Attributes\Table;
 use Windwalker\ORM\EntityInterface;
 use Windwalker\ORM\EntityTrait;
 use Windwalker\ORM\Metadata\EntityMetadata;
+use Windwalker\Core\DateTime\ServerTimeCast;
 
 /**
  * The Favorite class.
  */
+// phpcs:disable
+// todo: remove this when phpcs supports 8.4
 #[Table('favorites', 'favorite')]
 #[\AllowDynamicProperties]
 class Favorite implements EntityInterface
@@ -34,101 +36,27 @@ class Favorite implements EntityInterface
     use EntityTrait;
 
     #[Column('id'), PK, AutoIncrement]
-    protected ?int $id = null;
+    public ?int $id = null;
 
     #[Column('type')]
-    protected string $type = '';
+    public string $type = '';
 
     #[Column('user_id')]
-    protected string $userId = '';
+    public string $userId = '';
 
     #[Column('target_id')]
-    protected string $targetId = '';
+    public string $targetId = '';
 
     #[Column('created')]
-    #[CastNullable(Chronos::class)]
+    #[CastNullable(ServerTimeCast::class)]
     #[CreatedTime]
-    protected ?Chronos $created = null;
+    public ?Chronos $created = null {
+        set(\DateTimeInterface|string|null $value) => $this->created = Chronos::tryWrap($value);
+    }
 
     #[EntitySetup]
     public static function setup(EntityMetadata $metadata): void
     {
         //
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function setId(?int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    public function getUserId(): string
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(int|string $userId): static
-    {
-        $this->userId = (string) $userId;
-
-        return $this;
-    }
-
-    public function getCreated(): ?Chronos
-    {
-        return $this->created;
-    }
-
-    public function setCreated(DateTimeInterface|string|null $created): static
-    {
-        $this->created = Chronos::wrapOrNull($created);
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param  string  $type
-     *
-     * @return  static  Return self to support chaining.
-     */
-    public function setType(string $type): static
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTargetId(): string
-    {
-        return $this->targetId;
-    }
-
-    /**
-     * @param  string|int  $targetId
-     *
-     * @return  static  Return self to support chaining.
-     */
-    public function setTargetId(string|int $targetId): static
-    {
-        $this->targetId = (string) $targetId;
-
-        return $this;
     }
 }

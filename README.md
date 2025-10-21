@@ -68,6 +68,13 @@ You can add button component in blade templates:
 </div>
 ```
 
+in page ts file
+```ts
+import { useFavoriteButton } from '../../../../../vendor/lyrasoft/favorite/assets/dist';
+
+await useFavoriteButton();
+```
+
 Available params:
 
 | Name             | Type          | Description                               |

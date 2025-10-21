@@ -15,8 +15,7 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "php": ">=8.2",
-        "lyrasoft/luna": "^2.0"
+        "lyrasoft/luna": "^2.2"
     },
     "extra": {
         "windwalker":{
