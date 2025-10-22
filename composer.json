@@ -27,7 +27,10 @@
                 "vendors": {
                     "@lyrasoft/favorite": "portal:./vendor/lyrasoft/favorite/assets"
                 }
-            }
+            },
+            "modules": [
+                "src/Module"
+            ]
         }
     }
 }

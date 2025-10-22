@@ -1,11 +1,10 @@
 import {
-  UnicornApp,
-  useUnicorn,
   useHttpClient,
   simpleAlert,
   useBs5Tooltip,
   useUniDirective,
   module,
+  data
 } from '@windwalker-io/unicorn-next';
 
 export class FavoriteButtonHandler {
@@ -14,7 +13,6 @@ export class FavoriteButtonHandler {
   protected added: boolean;
   protected type: string;
   protected id: string;
-  protected u: UnicornApp;
 
   constructor(el: HTMLElement) {
 
@@ -23,7 +21,6 @@ export class FavoriteButtonHandler {
     this.added = el.dataset.added === '1' || el.dataset.added === 'true';
     this.type = el.dataset.type!;
     this.id = el.dataset.id!;
-    this.u = useUnicorn();
 
     this.el.addEventListener('click', async () => {
       await this.toggleFavorite();
@@ -34,7 +31,7 @@ export class FavoriteButtonHandler {
   }
 
   async toggleFavorite() {
-    const favData = this.u.data('favorite');
+    const favData = data('favorite');
 
     if (!favData.isLogin) {
       location.href = favData.loginUri;
@@ -118,7 +115,7 @@ export class FavoriteButtonHandler {
    * @param {string} className
    * @returns {string[]}
    */
-  classToList(className: string) {
+  classToList(className: string): string[] {
     return className.split(' ');
   }
 }

@@ -305,9 +305,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lyrasoft/luna-favorite@workspace:.":
+"@lyrasoft/favorite@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@lyrasoft/luna-favorite@workspace:."
+  resolution: "@lyrasoft/favorite@workspace:."
   dependencies:
     "@microsoft/api-extractor": "npm:^7.53.1"
     "@windwalker-io/unicorn-next": "npm:^0.1.6"

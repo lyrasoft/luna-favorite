@@ -1,18 +1,16 @@
-import { useUnicorn, useHttpClient, simpleAlert, useBs5Tooltip, useUniDirective, module } from "@windwalker-io/unicorn-next";
+import { data, useHttpClient, simpleAlert, useBs5Tooltip, useUniDirective, module } from "@windwalker-io/unicorn-next";
 class FavoriteButtonHandler {
   el;
   icon;
   added;
   type;
   id;
-  u;
   constructor(el) {
     this.el = el;
     this.icon = el.querySelector("i, span");
     this.added = el.dataset.added === "1" || el.dataset.added === "true";
     this.type = el.dataset.type;
     this.id = el.dataset.id;
-    this.u = useUnicorn();
     this.el.addEventListener("click", async () => {
       await this.toggleFavorite();
       this.refreshStyle();
@@ -20,7 +18,7 @@ class FavoriteButtonHandler {
     this.refreshStyle();
   }
   async toggleFavorite() {
-    const favData = this.u.data("favorite");
+    const favData = data("favorite");
     if (!favData.isLogin) {
       location.href = favData.loginUri;
       return;
@@ -49,8 +47,10 @@ class FavoriteButtonHandler {
       this.added = !this.added;
       this.el.dataset.added = this.added ? "1" : "0";
     } catch (e) {
+      if (isAxiosError(e)) {
+        await simpleAlert(e.message, "", "warning");
+      }
       console.error(e);
-      await simpleAlert(e.message, "", "warning");
       throw e;
     }
   }
@@ -92,7 +92,7 @@ class FavoriteButtonHandler {
   }
 }
 async function init() {
-  useUniDirective(
+  return useUniDirective(
     "favorite-button",
     {
       mounted(el) {

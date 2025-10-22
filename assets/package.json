@@ -1,10 +1,10 @@
 {
     "name": "@lyrasoft/favorite",
-    "private": true,
     "type": "module",
-    "main": "dist/favorite-button.js",
-    "module": "dist/favorite-button.js",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
     "types": "dist/index.d.ts",
+    "private": true,
     "scripts": {
         "dev": "vite build --mode development --watch",
         "build": "vite build --mode development",

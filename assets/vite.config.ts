@@ -42,9 +42,17 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       dts({
+        insertTypesEntry: true,
+        outDir: 'dist',
         tsconfigPath: resolve('./tsconfig.json'),
         bundleTypes: true,
-      })
+      }),
+      {
+        name: 'clear-files',
+        generateBundle() {
+          // rimraf.sync('./dist/**/*.js', { glob: true });
+        }
+      }
     ]
   };
 });

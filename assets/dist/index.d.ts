@@ -1,12 +1,9 @@
-import { UnicornApp } from '@windwalker-io/unicorn-next';
-
 declare class FavoriteButtonHandler {
     protected el: HTMLElement;
     protected icon: HTMLElement;
     protected added: boolean;
     protected type: string;
     protected id: string;
-    protected u: UnicornApp;
     constructor(el: HTMLElement);
     toggleFavorite(): Promise<void>;
     refreshStyle(): void;
