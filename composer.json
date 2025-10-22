@@ -15,6 +15,7 @@
     ],
     "minimum-stability": "beta",
     "require": {
+        "php": ">=8.4.6",
         "lyrasoft/luna": "^2.2"
     },
     "extra": {
@@ -23,7 +24,9 @@
                 "Lyrasoft\\Favorite\\FavoritePackage"
             ],
             "assets": {
-                "link": "assets/"
+                "vendors": {
+                    "@lyrasoft/favorite": "portal:./vendor/lyrasoft/favorite/assets"
+                }
             }
         }
     }

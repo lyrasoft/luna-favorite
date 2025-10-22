@@ -1,6 +1,10 @@
 {
-    "name": "@lyrasoft/luna-favorite",
+    "name": "@lyrasoft/favorite",
     "private": true,
+    "type": "module",
+    "main": "dist/favorite-button.js",
+    "module": "dist/favorite-button.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "dev": "vite build --mode development --watch",
         "build": "vite build --mode development",

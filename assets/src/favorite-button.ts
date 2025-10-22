@@ -68,9 +68,11 @@ export class FavoriteButtonHandler {
       this.added = !this.added;
       this.el.dataset.added = this.added ? '1' : '0';
     } catch (e) {
-      console.error(e);
-      await simpleAlert(e.message, '', 'warning');
+      if (isAxiosError(e)) {
+        await simpleAlert(e.message, '', 'warning');
+      }
 
+      console.error(e);
       throw e;
     }
   }
@@ -122,7 +124,7 @@ export class FavoriteButtonHandler {
 }
 
 async function init() {
-  useUniDirective<HTMLElement>(
+  return useUniDirective<HTMLElement>(
     'favorite-button',
     {
       mounted(el) {
