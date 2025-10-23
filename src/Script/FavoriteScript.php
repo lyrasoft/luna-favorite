@@ -53,8 +53,6 @@ class FavoriteScript extends AbstractScript
             }
 
             $this->unicornScript->addRoute('@favorite_ajax');
-
-            $this->js('@favorite/favorite-button.js');
         }
     }
 }

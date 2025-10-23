@@ -10,19 +10,20 @@
 declare(strict_types=1);
 
 use Lyrasoft\Favorite\FavoritePackage;
-use Lyrasoft\Luna\Entity\Article;
+use Windwalker\Core\Attributes\ConfigModule;
 
-return [
+return #[ConfigModule('formkit', enabled: true, priority: 100, belongsTo: FavoritePackage::class)]
+static fn() => [
     'favorite' => [
         'providers' => [
-            FavoritePackage::class
+            FavoritePackage::class,
         ],
 
         'ajax' => [
             'type_protect' => true,
             'allow_types' => [
-                'article'
-            ]
+                'article',
+            ],
         ],
-    ]
+    ],
 ];

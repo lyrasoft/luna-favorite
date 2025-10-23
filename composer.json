@@ -15,8 +15,8 @@
     ],
     "minimum-stability": "beta",
     "require": {
-        "php": ">=8.2",
-        "lyrasoft/luna": "^2.0"
+        "php": ">=8.4.6",
+        "lyrasoft/luna": "^2.2"
     },
     "extra": {
         "windwalker":{
@@ -24,8 +24,13 @@
                 "Lyrasoft\\Favorite\\FavoritePackage"
             ],
             "assets": {
-                "link": "assets/"
-            }
+                "vendors": {
+                    "@lyrasoft/favorite": "portal:./vendor/lyrasoft/favorite/assets"
+                }
+            },
+            "modules": [
+                "src/Module"
+            ]
         }
     }
 }
