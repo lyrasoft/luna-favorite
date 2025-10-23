@@ -12,7 +12,7 @@ declare(strict_types=1);
 use Lyrasoft\Favorite\FavoritePackage;
 use Windwalker\Core\Attributes\ConfigModule;
 
-return #[ConfigModule('formkit', enabled: true, priority: 100, belongsTo: FavoritePackage::class)]
+return #[ConfigModule('favorite', enabled: true, priority: 100, belongsTo: FavoritePackage::class)]
 static fn() => [
     'favorite' => [
         'providers' => [
