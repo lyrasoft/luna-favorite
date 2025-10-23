@@ -182,4 +182,6 @@ $app = new class () extends Console
     }
 };
 
+$app->addScript('yarn --cwd ./assets build:prod');
+
 $app->execute();
