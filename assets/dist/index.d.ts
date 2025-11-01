@@ -1,10 +1,12 @@
-declare class FavoriteButtonHandler {
+export declare class FavoriteButtonHandler {
     protected el: HTMLElement;
     protected icon: HTMLElement;
     protected added: boolean;
     protected type: string;
     protected id: string;
     constructor(el: HTMLElement);
+    off(): void;
+    private onClick;
     toggleFavorite(): Promise<void>;
     refreshStyle(): void;
     /**
@@ -14,13 +16,6 @@ declare class FavoriteButtonHandler {
     classToList(className: string): string[];
 }
 
-declare interface FavoriteButtonModule {
-    FavoriteButtonHandler: typeof FavoriteButtonHandler;
-    ready: typeof ready;
-}
-
-declare const ready: Promise<void>;
-
-export declare function useFavoriteButton(): Promise<FavoriteButtonModule>;
+export declare function useFavoriteButton(): Promise<void>;
 
 export { }
